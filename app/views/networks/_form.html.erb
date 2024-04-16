@@ -15,8 +15,11 @@
     <%= form.text_field :name, class: "form-control", placeholder: "Network name" %>
   </div>
 
-  <div class="field form-group">
-    <%= form.number_field :account_id, class: "form-control", value: 1 %>
+  <div class="field input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Account ID</label>
+    </div>
+    <%= form.select :account_id, Account.all.pluck(:id), {prompt: 'select'}, {class: "custom-select"} %>
   </div>
 
   <div class="actions form-group">

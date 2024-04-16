@@ -15,12 +15,18 @@
     <%= form.text_field :name, class: "form-control", placeholder: "Username" %>
   </div>
 
-  <div class="field form-group">
-    <%= form.number_field :usertype_id, class: "form-control", value: 1 %>
+  <div class="field input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Usertype ID</label>
+    </div>
+    <%= form.select :usertype_id, Usertype.all.pluck(:id), {prompt: 'select'}, {class: "custom-select"} %>
   </div>
 
-  <div class="field form-group">
-    <%= form.number_field :school_id, class: "form-control", value: 1 %>
+  <div class="field input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">School ID</label>
+    </div>
+    <%= form.select :school_id, School.all.pluck(:id), {prompt: 'select'}, {class: "custom-select"} %>
   </div>
 
   <div class="actions form-group">
