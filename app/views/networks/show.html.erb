@@ -1,0 +1,8 @@
+
+<div class="jumbotron">
+  <h1 class="display-6"><%= @network.name %></h1><hr/>
+  <p class="lead"><%= @network.account_id %>-<%= @network.id %></p>
+
+  <%= link_to 'Edit', edit_network_path(@network), class: "btn btn-secondary" %> 
+  <%= link_to 'Back', networks_path, class: "btn btn-secondary" %>
+</div>

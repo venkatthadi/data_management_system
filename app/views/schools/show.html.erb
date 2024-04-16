@@ -1,0 +1,8 @@
+
+<div class="jumbotron">
+  <h1 class="display-6"><%= @school.name %></h1><hr/>
+  <p class="lead"><%= @school.network_id %>-<%= @school.id %></p>
+
+  <%= link_to 'Edit', edit_school_path(@school), class: "btn btn-secondary" %>
+  <%= link_to 'Back', schools_path, class: "btn btn-secondary" %>
+</div>
