@@ -7,6 +7,8 @@
 * MySQL version: 8.0.36
 
 * How to run the test suite -
+    - create an empty database in MySQL
+    - update 'config/database.yml' with database details
     - go to the root directory
     - run "rails server" or "rails s" in terminal
 
