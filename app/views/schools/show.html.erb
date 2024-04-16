@@ -1,7 +1,27 @@
 
 <div class="jumbotron">
-  <h1 class="display-6"><%= @school.name %></h1><hr/>
-  <p class="lead"><%= @school.network_id %>-<%= @school.id %></p>
+  <h1 class="display-6"><%= @school.name %></h1>
+  <p class="lead">ID: <%= @school.id %></p>
+  <hr class="my-4">
+  
+  <table class="table table-hover table-striped table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th>User ID</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @school.users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  </table>
 
   <%= link_to 'Edit', edit_school_path(@school), class: "btn btn-secondary" %>
   <%= link_to 'Back', schools_path, class: "btn btn-secondary" %>

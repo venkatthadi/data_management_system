@@ -1,9 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron">
+  <h1 class="display-6"><%= @usertype.name %></h1>
+  <hr class="my-4">
+  
+  <table class="table table-hover table-striped table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th>User ID</th>
+      <th>Username</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Name:</strong>
-  <%= @usertype.name %>
-</p>
+  <tbody>
+    <% @usertype.users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
 
-<%= link_to 'Edit', edit_usertype_path(@usertype) %> |
-<%= link_to 'Back', usertypes_path %>
+  </table>
+
+  <%= link_to 'Edit', edit_usertype_path(@usertype), class: "btn btn-secondary" %>
+  <%= link_to 'Back', usertypes_path, class: "btn btn-secondary" %>
+</div>

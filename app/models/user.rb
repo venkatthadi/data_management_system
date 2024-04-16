@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-  belongs_to :usertypes
-  belongs_to :schools
+  belongs_to :usertypes, optional: true
+  belongs_to :schools, optional: true
 end

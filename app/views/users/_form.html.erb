@@ -11,22 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="field form-group">
+    <%= form.text_field :name, class: "form-control", placeholder: "Username" %>
   </div>
 
-  <div class="field">
-    <%= form.label :usertype_id %>
-    <%= form.number_field :usertype_id %>
+  <div class="field form-group">
+    <%= form.number_field :usertype_id, class: "form-control", value: 1 %>
   </div>
 
-  <div class="field">
-    <%= form.label :school_id %>
-    <%= form.number_field :school_id %>
+  <div class="field form-group">
+    <%= form.number_field :school_id, class: "form-control", value: 1 %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <%= form.submit class: "btn btn-secondary" %>
   </div>
 <% end %>

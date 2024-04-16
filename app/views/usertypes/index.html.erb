@@ -15,9 +15,9 @@
       <tr>
         <td><%= usertype.id %></td>
         <td><%= usertype.name %></td>
-        <td><%= link_to 'Show', usertype %></td>
-        <td><%= link_to 'Edit', edit_usertype_path(usertype) %></td>
-        <td><%= link_to 'Destroy', usertype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', usertype, class: "btn btn-outline-info" %></td>
+        <td><%= link_to 'Edit', edit_usertype_path(usertype), class: "btn btn-outline-secondary" %></td>
+        <td><%= link_to 'Destroy', usertype, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,4 +25,6 @@
 
 <br>
 
-<%= link_to 'New Usertype', new_usertype_path %>
+<%= link_to 'New Usertype', new_usertype_path, class: "btn btn-secondary" %>
+
+<%= link_to 'Home', root_path, class: "btn btn-secondary" %>

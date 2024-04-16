@@ -4,7 +4,7 @@
 <table class="table table-hover table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-      <th>ID</th>
+      <th>Account ID</th>
       <th>Name</th>
       <th colspan="3"></th>
     </tr>
@@ -15,9 +15,9 @@
       <tr>
         <td><%= account.id%></td>
         <td><%= account.name %></td>
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
-        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', account, class: "btn btn-outline-info" %></td>
+        <td><%= link_to 'Edit', edit_account_path(account), class: "btn btn-outline-secondary" %></td>
+        <td><%= link_to 'Destroy', account, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

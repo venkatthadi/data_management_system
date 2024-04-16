@@ -11,12 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="field form-group">
+    <%= form.text_field :name, class: "form-control", placeholder: "Usertype" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <%= form.submit class: "btn btn-secondary" %>
   </div>
 <% end %>
