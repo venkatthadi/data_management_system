@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: 2.7.2
 
-Things you may want to cover:
+* Rails version: 5.2.4
 
-* Ruby version
+* MySQL version: 8.0.36
 
-* System dependencies
+* How to run the test suite -
+    - go to the root directory
+    - run "rails server" or "rails s" in terminal
 
-* Configuration
+1. Account - {id, name} - Can be multiple Accounts
+2. Network - {id, name, account_id} - Belongs to an Account.
+3. School - {id, name, network_id} - Belongs to Network
+4. UserType - {id, name} - Same UserType can exist in multiple schools
+5. Users - {id, name} - User will have UserType & Belongs to a single School.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You can do CRUD operation on any of the layers.
