@@ -1,5 +1,15 @@
-
-<h1>Users</h1>
+<nav class="navbar navbar-light bg-light">
+  <h1>Users</h1>
+  <%= form_tag users_path, :method => 'get' do %>
+    <p class="form-inline">
+      <%= link_to 'New User', new_user_path, class: "form-control mr-sm-2 btn btn-secondary" %>
+      <%= select_tag :s_id, options_for_select(@schools.all.map { |school| [school.name, school.id] }, params[:s_id]), include_blank: "All schools", class: "form-control mr-sm-2" %>
+      <%= select_tag :ut_id, options_for_select(@usertypes.all.map { |usertype| [usertype.name, usertype.id] }, params[:ut_id]), include_blank: "All user types", class: "form-control mr-sm-2" %>
+      <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2" %>
+      <%= submit_tag "Search", :name => nil, class: "btn btn-outline-success my-2 my-sm-0" %>
+    </p>
+  <% end %>
+</nav>
 
 <table class="table table-hover table-striped table-bordered">
   <thead class="thead-dark">
@@ -8,6 +18,8 @@
       <th>Name</th>
       <th>Usertype</th>
       <th>School</th>
+      <th>Mail</th>
+      <th>Phone</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,8 +29,22 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.name %></td>
-        <td><%= user.usertype_id %></td>
-        <td><%= user.school_id %></td>
+        <td>
+          <% @usertypes.each do |usertype| %>
+            <% if user.usertype_id == usertype.id %>
+              <%= usertype.name %>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% @schools.each do |school| %>
+            <% if user.school_id == school.id %>
+              <%= school.name %>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
         <td><%= link_to 'Show', user, class: "btn btn-outline-info" %></td>
         <td><%= link_to 'Edit', edit_user_path(user), class: "btn btn-outline-secondary" %></td>
         <td><%= link_to 'Destroy', user, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,7 +54,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path, class: "btn btn-secondary" %>
-
-<%= link_to 'Home', root_path, class: "btn btn-secondary" %>

@@ -3,7 +3,12 @@ class NetworksController < ApplicationController
 
   # GET /networks or /networks.json
   def index
-    @networks = Network.all
+    if params[:search]
+      @networks = Network.search(params[:search], params[:a_id])
+    else
+      @networks = Network.all
+    end
+    @accounts = Account.all
   end
 
   # GET /networks/1 or /networks/1.json
@@ -65,6 +70,6 @@ class NetworksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def network_params
-      params.require(:network).permit(:name, :account_id)
+      params.require(:network).permit(:name, :account_id, :search, :a_id)
     end
 end

@@ -1,6 +1,13 @@
 class School < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :network_id, presence: true
   belongs_to :network
   has_many :users, :dependent => :destroy
+
+  def self.search(search, n_id)
+    objs = all
+    objs = objs.where('name LIKE ?', "%#{search}%") if search.present?
+    objs = objs.where(network_id: n_id) if n_id.present?
+    objs
+  end
 end

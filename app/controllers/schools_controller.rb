@@ -3,7 +3,12 @@ class SchoolsController < ApplicationController
 
   # GET /schools or /schools.json
   def index
-    @schools = School.all
+    if params[:search]
+      @schools = School.search(params[:search], params[:n_id])
+    else
+      @schools = School.all
+    end
+    @networks = Network.all
   end
 
   # GET /schools/1 or /schools/1.json
@@ -65,6 +70,6 @@ class SchoolsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def school_params
-      params.require(:school).permit(:name, :network_id)
+      params.require(:school).permit(:name, :network_id, :search, :n_id)
     end
 end

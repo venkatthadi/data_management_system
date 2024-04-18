@@ -1,5 +1,14 @@
 
-<h1>Accounts</h1>
+<nav class="navbar navbar-light bg-light">
+  <h1>Accounts</h1>
+  <%= form_tag accounts_path, :method => 'get' do %>
+    <p class="form-inline">
+      <%= link_to 'New Account', new_account_path, class: "form-control mr-sm-2 btn btn-secondary" %>
+      <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2" %>
+      <%= submit_tag "Search", :name => nil, class: "btn btn-outline-success my-2 my-sm-0" %>
+    </p>
+  <% end %>
+</nav>
 
 <table class="table table-hover table-striped table-bordered">
   <thead class="thead-dark">
@@ -23,8 +32,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Account', new_account_path, class: "btn btn-secondary" %>
-
-<%= link_to 'Home', root_path, class: "btn btn-secondary" %>

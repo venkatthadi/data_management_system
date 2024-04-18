@@ -3,7 +3,14 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    if params[:search]
+      @users = User.search(params[:search], params[:s_id], params[:ut_id])
+    else
+      @users = User.all
+    end
+    # @users = User.all
+    @usertypes = Usertype.all
+    @schools = School.all
   end
 
   # GET /users/1 or /users/1.json
@@ -65,6 +72,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :usertype_id, :school_id)
+      params.require(:user).permit(:name, :usertype_id, :school_id, :email, :phone, :search, :s_id, :ut_id)
     end
 end

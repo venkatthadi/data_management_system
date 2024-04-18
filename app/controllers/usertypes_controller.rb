@@ -3,7 +3,11 @@ class UsertypesController < ApplicationController
 
   # GET /usertypes or /usertypes.json
   def index
-    @usertypes = Usertype.all
+    if params[:search]
+      @usertypes = Usertype.search(params[:search])
+    else
+      @usertypes = Usertype.all
+    end
   end
 
   # GET /usertypes/1 or /usertypes/1.json
@@ -65,6 +69,6 @@ class UsertypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def usertype_params
-      params.require(:usertype).permit(:name)
+      params.require(:usertype).permit(:name, :search)
     end
 end

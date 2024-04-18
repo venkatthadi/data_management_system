@@ -1,4 +1,14 @@
-<h1>Networks</h1>
+<nav class="navbar navbar-light bg-light">
+  <h1>Networks</h1>
+  <%= form_tag networks_path, :method => 'get' do %>
+    <p class="form-inline">
+      <%= link_to 'New Network', new_network_path, class: "form-control mr-sm-2 btn btn-secondary" %>
+      <%= select_tag :a_id, options_for_select(@accounts.all.map { |account| [account.name, account.id] }, params[:a_id]), include_blank: "All accounts", class: "form-control mr-sm-2" %>
+      <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2" %>
+      <%= submit_tag "Search", :name => nil, class: "btn btn-outline-success my-2 my-sm-0" %>
+    </p>
+  <% end %>
+</nav>
 
 <table class="table table-hover table-striped table-bordered">
   <thead class="thead-dark">
@@ -15,7 +25,13 @@
       <tr>
         <td><%= network.id %></td>
         <td><%= network.name %></td>
-        <td><%= network.account_id %></td>
+        <td>
+          <% @accounts.each do |account| %>
+            <% if network.account_id == account.id %>
+              <%= account.name %>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', network, class: "btn btn-outline-info" %></td>
         <td><%= link_to 'Edit', edit_network_path(network), class: "btn btn-outline-secondary" %></td>
         <td><%= link_to 'Destroy', network, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,9 +39,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Network', new_network_path, class: "btn btn-secondary" %>
-
-<%= link_to 'Home', root_path, class: "btn btn-secondary" %>
