@@ -16,6 +16,8 @@
 2. Network - {id, name, account_id} - Belongs to an Account.
 3. School - {id, name, network_id} - Belongs to Network
 4. UserType - {id, name} - Same UserType can exist in multiple schools
-5. Users - {id, name} - User will have UserType & Belongs to a single School.
+5. Users - {id, name, email, phone, usertype, school} - User will have UserType & Belongs to a single School.
 
 You can do CRUD operation on any of the layers.
+
+Added admin login to access all functionalities. Normal users can only view the information present in the tables.
