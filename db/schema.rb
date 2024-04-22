@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_18_113333) do
+ActiveRecord::Schema.define(version: 2024_04_22_095534) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 2024_04_18_113333) do
     t.datetime "updated_at", null: false
     t.integer "account_id"
     t.index ["account_id"], name: "index_accounts_on_account_id"
+  end
+
+  create_table "logins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   create_table "networks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -44,6 +52,7 @@ ActiveRecord::Schema.define(version: 2024_04_18_113333) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "phone"
+    t.datetime "remember_created_at"
     t.string "email"
     t.index ["school_id"], name: "index_users_on_school_id"
     t.index ["usertype_id"], name: "index_users_on_usertype_id"

@@ -1,4 +1,5 @@
 class SchoolsController < ApplicationController
+  before_action :must_login
   before_action :set_school, only: %i[ show edit update destroy ]
 
   # GET /schools or /schools.json

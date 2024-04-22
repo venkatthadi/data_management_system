@@ -1,4 +1,5 @@
 class NetworksController < ApplicationController
+  before_action :must_login
   before_action :set_network, only: %i[ show edit update destroy ]
 
   # GET /networks or /networks.json

@@ -1,4 +1,5 @@
 class UsertypesController < ApplicationController
+  before_action :must_login
   before_action :set_usertype, only: %i[ show edit update destroy ]
 
   # GET /usertypes or /usertypes.json

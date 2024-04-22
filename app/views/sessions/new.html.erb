@@ -1,0 +1,21 @@
+
+<div class="jumbotron">
+        <%= form_tag '/login' do %>
+        <div class="field input-group mb-3">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Email</label>
+            </div>
+            <%= text_field_tag :email, nil, class: 'form-control' %>
+        </div>
+        <div class="field input-group mb-3">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Password</label>
+            </div>
+            <%= password_field_tag :password, nil, class: 'form-control' %>
+        </div>
+        <center>
+            <%= submit_tag 'Log in', class: 'btn btn-success' %>
+        </center>
+        <% end %>
+    </div>
+</div>
