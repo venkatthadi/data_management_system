@@ -4,9 +4,9 @@ class AccountsController < ApplicationController
   # GET /accounts or /accounts.json
   def index
     if params[:search]
-      @accounts = Account.search(params[:search])
+      @accounts = Account.search(params[:search], params[:page])
     else
-      @accounts = Account.all
+      @accounts = Account.paginate(:page => params[:page], per_page: 5)
     end
   end
 
@@ -70,6 +70,6 @@ class AccountsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def account_params
-      params.require(:account).permit(:name, :search)
+      params.require(:account).permit(:name, :search, :page)
     end
 end

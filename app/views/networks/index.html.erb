@@ -39,3 +39,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div class = "pagination">
+  <%= will_paginate @networks, renderer: BootstrapPagination::Rails %>
+</div>

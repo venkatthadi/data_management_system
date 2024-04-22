@@ -1,4 +1,6 @@
-<h1>Accounts</h1>
+<nav class="navbar navbar-light bg-light">
+  <h1>Accounts</h1>
+</nav>
 
 <table class="table table-hover table-striped table-bordered">
   <thead class="thead-dark">
@@ -22,9 +24,15 @@
   </tbody>
 </table>
 
+<div class = "pagination">
+  <%= will_paginate @accounts, renderer: BootstrapPagination::Rails %>
+</div>
+
 <br>
 
-<h1>Networks</h1>
+<nav class="navbar navbar-light bg-light">
+  <h1>Networks</h1>
+</nav>
 
 <table class="table table-hover table-striped table-bordered">
   <thead class="thead-dark">
@@ -41,7 +49,13 @@
       <tr>
         <td><%= network.id %></td>
         <td><%= network.name %></td>
-        <td><%= network.account_id %></td>
+        <td>
+          <% @accounts.each do |account| %>
+            <% if network.account_id == account.id %>
+              <%= account.name %>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', network, class: "btn btn-outline-info" %></td>
         <td><%= link_to 'Edit', edit_network_path(network), class: "btn btn-outline-secondary" %></td>
         <td><%= link_to 'Destroy', network, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -50,9 +64,15 @@
   </tbody>
 </table>
 
+<div class = "pagination">
+  <%= will_paginate @networks, renderer: BootstrapPagination::Rails %>
+</div>
+
 <br>
 
-<h1>Schools</h1>
+<nav class="navbar navbar-light bg-light">
+  <h1>Schools</h1>
+</nav>
 
 <table class="table table-hover table-striped table-bordered">
   <thead class="thead-dark">
@@ -69,7 +89,13 @@
       <tr>
         <td><%= school.id %></td>
         <td><%= school.name %></td>
-        <td><%= school.network_id %></td>
+        <td>
+          <% @networks.each do |network| %>
+            <% if school.network_id == network.id %>
+              <%= network.name %>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', school, class: "btn btn-outline-info" %></td>
         <td><%= link_to 'Edit', edit_school_path(school), class: "btn btn-outline-secondary" %></td>
         <td><%= link_to 'Destroy', school, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -78,9 +104,15 @@
   </tbody>
 </table>
 
+<div class = "pagination">
+  <%= will_paginate @schools, renderer: BootstrapPagination::Rails %>
+</div>
+
 <br>
 
-<h1>Usertypes</h1>
+<nav class="navbar navbar-light bg-light">
+  <h1>UserTypes</h1>
+</nav>
 
 <table class="table table-hover table-striped table-bordered">
   <thead class="thead-dark">
@@ -104,9 +136,15 @@
   </tbody>
 </table>
 
+<div class = "pagination">
+  <%= will_paginate @usertypes, renderer: BootstrapPagination::Rails %>
+</div>
+
 <br>
 
-<h1>Users</h1>
+<nav class="navbar navbar-light bg-light">
+  <h1>Users</h1>
+</nav>
 
 <table class="table table-hover table-striped table-bordered">
   <thead class="thead-dark">
@@ -115,6 +153,8 @@
       <th>Name</th>
       <th>Usertype</th>
       <th>School</th>
+      <th>Mail</th>
+      <th>Phone</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -124,8 +164,22 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.name %></td>
-        <td><%= user.usertype_id %></td>
-        <td><%= user.school_id %></td>
+        <td>
+          <% @usertypes.each do |usertype| %>
+            <% if user.usertype_id == usertype.id %>
+              <%= usertype.name %>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% @schools.each do |school| %>
+            <% if user.school_id == school.id %>
+              <%= school.name %>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
         <td><%= link_to 'Show', user, class: "btn btn-outline-info" %></td>
         <td><%= link_to 'Edit', edit_user_path(user), class: "btn btn-outline-secondary" %></td>
         <td><%= link_to 'Destroy', user, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -133,5 +187,9 @@
     <% end %>
   </tbody>
 </table>
+
+<div class = "pagination">
+  <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+</div>
 
 <br>

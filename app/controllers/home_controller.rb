@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @accounts = Account.all
-    @networks = Network.all
-    @schools = School.all
-    @usertypes = Usertype.all
-    @users = User.all
+    @accounts = Account.paginate(:page => params[:page], per_page: 5)
+    @networks = Network.paginate(:page => params[:page], per_page: 5)
+    @schools = School.paginate(:page => params[:page], per_page: 5)
+    @usertypes = Usertype.paginate(:page => params[:page], per_page: 5)
+    @users = User.paginate(:page => params[:page], per_page: 5)
   end
 end

@@ -3,6 +3,8 @@
   <%= form_tag users_path, :method => 'get' do %>
     <p class="form-inline">
       <%= link_to 'New User', new_user_path, class: "form-control mr-sm-2 btn btn-secondary" %>
+      <%# <%= select_tag :a_id, options_for_select(@accounts.all.map { |account| [account.name, account.id] }, params[:n_id]), include_blank: "All accounts", class: "form-control mr-sm-2" %>
+      <%= select_tag :n_id, options_for_select(@networks.all.map { |network| [network.name, network.id] }, params[:n_id]), include_blank: "All networks", class: "form-control mr-sm-2" %>
       <%= select_tag :s_id, options_for_select(@schools.all.map { |school| [school.name, school.id] }, params[:s_id]), include_blank: "All schools", class: "form-control mr-sm-2" %>
       <%= select_tag :ut_id, options_for_select(@usertypes.all.map { |usertype| [usertype.name, usertype.id] }, params[:ut_id]), include_blank: "All user types", class: "form-control mr-sm-2" %>
       <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2" %>
@@ -53,4 +55,6 @@
   </tbody>
 </table>
 
-<br>
+<div class = "pagination">
+  <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+</div>

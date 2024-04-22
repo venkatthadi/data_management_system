@@ -4,9 +4,9 @@ class NetworksController < ApplicationController
   # GET /networks or /networks.json
   def index
     if params[:search]
-      @networks = Network.search(params[:search], params[:a_id])
+      @networks = Network.search(params[:search], params[:a_id], params[:page])
     else
-      @networks = Network.all
+      @networks = Network.paginate(:page => params[:page], per_page: 5)
     end
     @accounts = Account.all
   end
@@ -70,6 +70,6 @@ class NetworksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def network_params
-      params.require(:network).permit(:name, :account_id, :search, :a_id)
+      params.require(:network).permit(:name, :account_id, :search, :a_id, :page)
     end
 end

@@ -30,3 +30,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div class = "pagination">
+  <%= will_paginate @usertypes, renderer: BootstrapPagination::Rails %>
+</div>

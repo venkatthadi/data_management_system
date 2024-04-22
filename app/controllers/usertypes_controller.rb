@@ -4,9 +4,9 @@ class UsertypesController < ApplicationController
   # GET /usertypes or /usertypes.json
   def index
     if params[:search]
-      @usertypes = Usertype.search(params[:search])
+      @usertypes = Usertype.search(params[:search], params[:page])
     else
-      @usertypes = Usertype.all
+      @usertypes = Usertype.paginate(:page => params[:page], per_page: 5)
     end
   end
 
@@ -69,6 +69,6 @@ class UsertypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def usertype_params
-      params.require(:usertype).permit(:name, :search)
+      params.require(:usertype).permit(:name, :search, :page)
     end
 end

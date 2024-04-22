@@ -19,7 +19,8 @@
     <div class="input-group-prepend">
       <label class="input-group-text" for="inputGroupSelect01">Account ID</label>
     </div>
-    <%= form.select :account_id, Account.all.pluck(:id), {prompt: 'select'}, {class: "custom-select"} %>
+    
+    <%= form.select :account_id, Account.all.pluck(:name, :id), {prompt: 'select'}, {class: "custom-select"} %>
   </div>
 
   <div class="actions form-group">
