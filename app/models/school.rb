@@ -4,10 +4,11 @@ class School < ApplicationRecord
   belongs_to :network
   has_many :users, :dependent => :destroy
 
-  def self.search(search, n_id)
+  def self.search(search, n_id, a_id)
     objs = all
     objs = objs.where('name LIKE ?', "%#{search}%") if search.present?
     objs = objs.where(network_id: n_id) if n_id.present?
+    objs = objs.joins(:network).where(networks: {account_id: a_id}) if a_id.present?
     objs
   end
 end
