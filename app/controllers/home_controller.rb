@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  before_action :must_login
 
   def index
     @accounts = Account.paginate(:page => params[:page], per_page: 5)

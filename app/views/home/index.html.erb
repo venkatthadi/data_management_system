@@ -162,7 +162,11 @@
           <% end %>
         </td>
         <td><%= user.email %></td>
-        <td><%= user.phone %></td>
+        <td>
+          <% if logged_in? %>
+          <%= user.phone %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
